@@ -1,0 +1,40 @@
+{{ define "main" }}
+  <div class="w-11/12 mx-auto mt-[60px] pt-8">
+    <article>
+      <header class="space-y-2">
+        <h1 class="text-lg font-medium">{{ .Title }}</h1>
+        <div class="flex items-center space-x-2">
+          <span class="flex items-center text-xs"
+            ><img
+              src="/icons/calendar.svg"
+              alt="calendar icon"
+              class="mr-1"
+            />{{ .PublishDate.Format "January 2, 2006" }}</span
+          >
+          <!-- TODO Fix this -->
+          <span class="flex items-center text-xs"
+            ><img src="/icons/folder.svg" alt="folder icon" class="mr-1" />
+            {{ range $key, $value := .Params.categories -}}
+              {{- if gt $key 0 }}, &nbsp;{{ end }}
+              <a
+                href="/categories/{{ $value | urlize }}"
+                class="hover:text-indigo-600 hover:underline"
+                >{{ . }}</a
+              >
+            {{- end }}
+          </span>
+        </div>
+        <picture class="block">
+          <img
+            src="{{ .Params.image.url }}"
+            alt="{{ .Params.image.alt }}"
+            class="w-full object-cover object-center h-[128px]"
+          />
+        </picture>
+      </header>
+      <div class="mt-2 text-sm">
+        {{ .Content }}
+      </div>
+    </article>
+  </div>
+{{ end }}

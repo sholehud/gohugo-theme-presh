@@ -1,0 +1,20 @@
+{
+  "name": "gohugo-theme-presh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tw:w": "npx tailwindcss -i tailwind.css -o static/css/style.css -w",
+    "tw:b": "npx tailwindcss -i tailwind.css -c tailwind.config.js -o static/css/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "prettier": "^2.3.2",
+    "prettier-plugin-go-template": "0.0.11",
+    "tailwindcss": "^2.2.7"
+  }
+}

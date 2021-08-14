@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Georama:wght@300;400;500;700&display=swap");
+@import "tailwindcss/base";
+@layer base {
+  img {
+    @apply block;
+  }
+}
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";

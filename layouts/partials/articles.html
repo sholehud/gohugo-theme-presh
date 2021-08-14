@@ -1,0 +1,53 @@
+<main>
+  <section>
+    <div class="flex items-center justify-center mb-2 space-x-1">
+      <span
+        ><img src="/icons/document-b.svg" alt="document" class="w-[24px]"
+      /></span>
+      <h1 class="font-medium capitalize">tulisan</h1>
+    </div>
+    <div class="grid grid-cols-1 gap-4 px-2">
+      {{ range first 3 (where .Site.RegularPages "Section" "articles") }}
+        <a href="{{ .RelPermalink }}" class="block p-2 shadow-md">
+          <article>
+            <picture class="block mb-2">
+              <img
+                src="{{ .Params.image.url }}"
+                alt="{{ .Params.image.alt }}"
+                class="w-full object-cover object-center h-[128px]"
+              />
+            </picture>
+            <div class="space-y-2">
+              <h1 class="text-sm font-medium">
+                {{ .Title | truncate 80 }}
+              </h1>
+              <div class="flex items-center space-x-2">
+                <span class="flex items-center text-xs"
+                  ><img
+                    src="/icons/calendar.svg"
+                    alt=""
+                    class="mr-1"
+                  />{{ .PublishDate.Format "January 2, 2006" }}</span
+                >
+                <span class="flex items-center text-xs"
+                  ><img src="/icons/folder.svg" alt="" class="mr-1" />
+                  {{ delimit .Params.categories ", " }}
+                </span>
+              </div>
+            </div>
+          </article>
+        </a>
+      {{ end }}
+      {{ $countPage := len (where .Site.RegularPages "Section" "articles") }}
+      {{ if gt $countPage 3 }}
+        <div>
+          <a
+            href="/articles/"
+            class="block px-4 py-3 text-sm text-center text-white capitalize bg-indigo-400 hover:bg-indigo-700"
+            >lihat semua tulisan</a
+          >
+        </div>
+      {{ end }}
+    </div>
+  </section>
+</main>
